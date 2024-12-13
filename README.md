@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rumoros 
 
-## Getting Started
+## 🚀 Open-Source Web Analytics Platform
 
-First, run the development server:
+### Overview
 
+Rumoros is a lightweight, privacy-focused, and easy-to-implement web analytics solution designed to be a robust alternative to Google Analytics. With simple script integration and powerful insights, Rumoros empowers developers and businesses to understand their web traffic without compromising user privacy.
+
+### 🌟 Key Features
+
+#### Current Features
+- One-line script integration
+- Privacy-first tracking
+- Real-time analytics dashboard
+- GDPR and CCPA compliant
+- Self-hostable infrastructure
+- Minimal performance impact
+
+#### Upcoming Features
+- [ ] Custom event tracking
+- [ ] Audience segmentation
+- [ ] Funnel and conversion tracking
+- [ ] Geolocation insights
+- [ ] Advanced bot detection
+- [ ] Export and reporting capabilities
+- [ ] Machine learning-powered insights
+
+### 🛠 Tech Stack
+- **Frontend**: Next.js
+- **Backend**: PostgreSQL
+- **Deployment**: Docker-compatible
+- **Language**: TypeScript
+
+### 📦 Installation
+
+#### Prerequisites
+- Node.js (v18+)
+- PostgreSQL (v13+)
+- Docker (optional)
+
+#### Quick Setup
+
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/devansh-m12/rumoros
+cd rumoros
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configure environment
+```bash
+cp .env.example .env
+# Edit .env with your PostgreSQL credentials
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Initialize database
+```bash
+npm run db:migrate
+```
 
-## Learn More
+5. Run development server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 🔍 Script Integration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+expected script to your website:
+```html
+<script 
+  src="https://cdn.rumoros.com/tracker.js" 
+  web-id="YOUR_UNIQUE_WEB_ID">
+</script>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🔒 Privacy & Compliance
+- No personally identifiable information (PII) collected
+- Anonymous tracking
+- User consent management
+- GDPR and CCPA compliant by design
 
-## Deploy on Vercel
+### 📊 Analytics Captured
+- Page views
+- Referral sources
+- Device types
+- Browser information
+- Session duration
+- Bounce rates
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🚀 Deployment Options
+- Self-hosted (recommended)
+- Cloud deployment
+- Docker container
+- Kubernetes support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🤝 Contributing
+We welcome contributions! Please see `CONTRIBUTING.md` for details.
+
+### 📄 License
+MIT License
+
+
+---
+
+**Created with ❤️ by the Devansh**
