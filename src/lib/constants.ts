@@ -20,6 +20,26 @@ export const EVENT_NAME_LENGTH = 50;
 
 export const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
+export const COLLECTION_TYPE = {
+  event: 'event',
+  identify: 'identify',
+};
+
+
+export const EVENT_TYPE = {
+  pageView: 1,
+  customEvent: 2,
+} as const;
+
+export const DATA_TYPE = {
+  string: 1,
+  number: 2,
+  boolean: 3,
+  date: 4,
+  array: 5,
+} as const;
+
+
 export const DESKTOP_OS = [
   'BeOS',
   'Chrome OS',

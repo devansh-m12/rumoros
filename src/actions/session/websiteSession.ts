@@ -45,6 +45,6 @@ export async function getWebsiteSession(websiteId: string, sessionId: string) {
   `;
 
   const result = await prisma.$queryRaw<any>(query);
-  console.log("result", result);
+  // console.log("result", result);
   return result?.[0];
 }
