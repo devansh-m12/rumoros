@@ -1,28 +1,18 @@
+import { getWebsite } from '@/actions/prisma/website';
+import { createSession } from '@/actions/session/createSession';
+import { uuid, visitSalt } from '@/utils/helprFunc/crypto';
 import { getClientInfo } from '@/utils/helprFunc/detect';
+import { useSession } from '@/utils/hooks/useSession';
+import { ok } from '@/utils/response';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: NextRequest) {
+export async function POST(req: any) {
     try {
-        const payload = await req.json();
-        
-        // Create a modified request object that matches the expected structure
-        const modifiedReq = {
-            headers: req.headers,
-            body: {
-                payload: {
-                    ...payload,
-                    screen: payload?.payload?.screen || ''
-                }
-            }
-        };
-        
+        await useSession(req, NextResponse.next(), () => {});
+        const session = req?.session;
+        console.log("session", session);
+        return ok(NextResponse.next(), {session});
 
-        const clientInfo = await getClientInfo(modifiedReq);
-        console.log(clientInfo);
-        return NextResponse.json({
-            success: true,
-            data: clientInfo
-        });
     } catch (error) {
         console.error('Tracking error:', error);
         return NextResponse.json(

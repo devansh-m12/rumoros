@@ -26,8 +26,6 @@ export function getIpAddress(req: any): string | null {
 
 
 export function getDevice(screen: string | undefined, os: string) {
-    console.log("screen", screen);
-    console.log("os", os);
     if (!screen) return 'desktop'; // Default to desktop if no screen size
 
     const [width] = screen.split('x');
@@ -134,7 +132,7 @@ function safeDecodeCfHeader(s: string | undefined | null): string | undefined | 
         const location = await getLocation(ip, req);
         const browser = browserName(userAgent);
         const os = detectOS(userAgent) as string;
-        const device = getDevice(req.body?.payload?.screen, os);
+        const device = getDevice(req?.body?.payload?.screen, os);
 
         return {
             userAgent,
@@ -149,6 +147,16 @@ function safeDecodeCfHeader(s: string | undefined | null): string | undefined | 
         };
     } catch (error) {
         console.error('Error getting client info:', error);
-        return null;
+        return {
+            userAgent: '',
+            browser: '',
+            os: '',
+            ip: '',
+            country: '',
+            subdivision1: '',
+            subdivision2: '',
+            city: '',
+            device: '',
+        }
     }
   }
