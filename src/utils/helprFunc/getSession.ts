@@ -3,12 +3,12 @@ import { getWebsiteSession } from "@/actions/session/websiteSession";
 import { uuid, visitSalt } from "./crypto";
 import { getClientInfo } from "./detect";
 import { createSession } from "@/actions/session/createSession";
-import { NextRequest } from "next/server";
+import { NextRequestTrack } from "@/types/request";
 
-export const getSession = async (req: NextRequest) => {
+export const getSession = async (req: NextRequestTrack, parsedBody: any) => {
     try {
-        const {payload} = await req.json();
-        const {website:websiteId, hostname,screen, language} = payload;
+        const { payload } = parsedBody;
+        const { website: websiteId, hostname, screen, language } = payload;
         const website = await getWebsite(websiteId);
         // if(!website) {
         //     return NextResponse.json({
@@ -30,35 +30,35 @@ export const getSession = async (req: NextRequest) => {
 
         const sessionId = uuid(websiteId, hostname,ip,userAgent);
         const visitId = uuid(sessionId, visitSalt());
-        console.log("sessionId", sessionId);
-        console.log("websiteId", websiteId);
 
         let session = await getWebsiteSession(websiteId, sessionId);
-        // if (!session) {
-        //     try {
-        //         session = await createSession({
-        //             id: sessionId,
-        //             websiteId: websiteId,
-        //             hostname,
-        //             browser,
-        //             os,
-        //             device,
-        //             screen,
-        //             language,
-        //             country,
-        //             subdivision1,
-        //             subdivision2,
-        //             city,
-        //         });
-        //     } catch (error) {
-        //         console.error('Session creation error:', error);
-        //         return null;
-        //     }
-        // }
-        console.log("session",session);
-        return session;
+        if (!session) {
+            try {
+                session = await createSession({
+                    id: sessionId,
+                    websiteId: websiteId,
+                    hostname,
+                    browser,
+                    os,
+                    device,
+                    screen,
+                    language,
+                    country,
+                    subdivision1,
+                    subdivision2,
+                    city,
+                });
+            } catch (error) {
+                console.error('Session creation error:', error);
+                return null;
+            }
+        }
+        return {
+            ...session,
+            visitId
+        };
     } catch (error) {
-        console.error('getSession error:', error);
-        return null;
+        console.error('Get session error:', error);
+        throw error;
     }
 }
