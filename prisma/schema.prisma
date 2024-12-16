@@ -8,8 +8,9 @@ datasource db {
 }
 
 model User {
-  id          String    @id @unique @map("user_id") @db.Uuid
+  id          String    @id @unique @map("user_id") @db.Uuid @default(uuid())
   username    String    @unique @db.VarChar(255)
+  email       String    @unique @db.VarChar(255)
   password    String    @db.VarChar(60)
   role        String    @map("role") @db.VarChar(50)
   logoUrl     String?   @map("logo_url") @db.VarChar(2183)
