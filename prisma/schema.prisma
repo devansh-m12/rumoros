@@ -61,7 +61,7 @@ model Session {
 }
 
 model Website {
-  id        String    @id @unique @map("website_id") @db.Uuid
+  id        String    @id @unique @map("website_id") @db.Uuid @default(uuid())
   name      String    @db.VarChar(100)
   domain    String?   @db.VarChar(500)
   shareId   String?   @unique @map("share_id") @db.VarChar(50)
