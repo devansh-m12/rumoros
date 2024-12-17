@@ -72,3 +72,7 @@ export async function createUser(data: {
   export async function getUserByEmail(email: string, options: GetUserOptions = {}) {
     return findUser({ where: { email } }, options);
   }
+
+  export async function getUserById(userId: string) {
+    return findUser({ where: { id: userId } });
+  }

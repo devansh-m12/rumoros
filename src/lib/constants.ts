@@ -25,6 +25,19 @@ export const COLLECTION_TYPE = {
   identify: 'identify',
 };
 
+export const SESSION_COLUMNS = [
+  'browser',
+  'os',
+  'device',
+  'screen',
+  'language',
+  'country',
+  'region',
+  'city',
+  'host',
+];
+
+
 export const ROLES = {
   admin: 'admin',
   user: 'user',
