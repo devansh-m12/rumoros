@@ -52,7 +52,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             user.password &&
             (await bcrypt.compare(credentials.password, user.password))
           ) {
-            console.log("yeser")
 
             const jwt = await generateJWT({
               id: user.id,
@@ -79,15 +78,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async session({ session, token }: { session: any; token: any }) {
-      console.log("session",token)
       if (token.user_id) {
         session.user.id = token.user_id;
       }
       return session;
     },
     async jwt({ token, user }: { token: any; user: any }) {
-      console.log("jwt",token)
-      console.log("user",user)
       if(user?.id){
         token.user_id = user.id
       }

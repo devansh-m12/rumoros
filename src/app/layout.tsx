@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import { Providers } from "./provider";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +33,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           geistSans.variable,
         )}
       >
-        <Header />
-        {children}
-        <Toaster />
+        <SessionProvider>
+          <Header />
+          {children}
+          <Toaster />
+        </SessionProvider>
       </body>
     </html>
   );
