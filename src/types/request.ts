@@ -1,10 +1,10 @@
-import { HOSTNAME_REGEX, IP_REGEX, COLLECTION_TYPE } from "@/lib/constants";
+import { HOSTNAME_REGEX, IP_REGEX, COLLECTION_TYPE, ROLES } from "@/lib/constants";
 import { NextRequest } from "next/server";
 import * as yup from "yup";
 type ObjectValues<T> = T[keyof T];
 
 export type CollectionType = ObjectValues<typeof COLLECTION_TYPE>;
-
+export type Role = ObjectValues<typeof ROLES>;
 export interface YupRequest {
     GET?: yup.ObjectSchema<any>;
     POST?: yup.ObjectSchema<any>;
@@ -72,3 +72,8 @@ const schema = {
         .required(),
     }),
 };
+
+export interface GetUserOptions {
+  includePassword?: boolean;
+  showDeleted?: boolean;
+}

@@ -25,6 +25,16 @@ export const COLLECTION_TYPE = {
   identify: 'identify',
 };
 
+export const ROLES = {
+  admin: 'admin',
+  user: 'user',
+  viewOnly: 'view-only',
+  teamOwner: 'team-owner',
+  teamManager: 'team-manager',
+  teamMember: 'team-member',
+  teamViewOnly: 'team-view-only',
+} as const;
+
 
 export const EVENT_TYPE = {
   pageView: 1,
