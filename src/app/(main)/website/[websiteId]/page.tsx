@@ -1,7 +1,7 @@
 'use client';
 
+import WebsiteStats from "@/components/website/websiteStats";
 import { useEffect, useState } from "react";
-
 
 export default function WebsitePage({ params }: { params: { websiteId: string } }) {
     const [website, setWebsite] = useState<string>("");
@@ -15,6 +15,6 @@ export default function WebsitePage({ params }: { params: { websiteId: string } 
     }, [params]);
 
     return <>
-    
+        <WebsiteStats websiteId={website} />
     </>
 }
