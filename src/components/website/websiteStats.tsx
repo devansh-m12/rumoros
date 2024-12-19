@@ -108,7 +108,7 @@ export default function WebsiteStats({ websiteId, startAt, endAt }: WebsiteStats
 
   return (
     <div className="space-y-6">
-      {/* Stats Cards */}
+      {/* Stats Cardss */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
         <Card className="p-4">
           <h3 className="text-sm font-medium text-gray-500">Pageviews</h3>
