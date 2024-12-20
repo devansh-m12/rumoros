@@ -44,10 +44,16 @@ export default function WebsiteStats({ websiteId, startAt, endAt }: WebsiteStats
   useEffect(() => {
     const fetchStats = async () => {
       try {
+        if(!websiteId) {
+          // setError("Website ID is required");
+          return;
+        }
         setLoading(true);
         const queryParams = new URLSearchParams();
         if (startAt) queryParams.append('startAt', startAt.toString());
         if (endAt) queryParams.append('endAt', endAt.toString());
+
+          // console.log("websiteId", `/api/website/${websiteId}/stats?${queryParams.toString()}`);
 
         const response = await fetch(
           `/api/website/${websiteId}/stats?${queryParams.toString()}`
