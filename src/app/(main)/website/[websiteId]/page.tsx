@@ -15,6 +15,8 @@ export default function WebsitePage({ params }: { params: { websiteId: string } 
     }, [params]);
 
     return <>
-        <WebsiteStats websiteId={website} />
+        <div className="flex flex-col gap-4">
+            <WebsiteStats websiteId={website} />
+        </div>
     </>
 }
